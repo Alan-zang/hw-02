@@ -15,33 +15,28 @@ library(tidyverse)
 library(cherryblossom)  
 ```
 
-
-
 ## Exercise 1
 
 ```{r ex1a, out.width="80%"}
 run17 %>%
   filter(event == "10 Mile") %>%
   ggplot(mapping = aes(x = age)) +
-    geom_histogram(binwidth = 2)
+    geom_histogram(binwidth = 2) 
 ```
 
-
-_Write your text to answer exercise 1a here (Please delete this message before submission!)_
-
+The histogram x-axis is age of people run 10 miles and y-axis is count number of the people.THIS REPRESENT the main particepents is young adults (over 20 and less 40 years old)
 
 ```{r ex1b, out.width="80%"}
-# Write your code for Ex1b here
-
-
+run17 %>%
+  filter(event == "5K") %>%
+  ggplot(mapping = aes(x = age)) +
+  geom_histogram(binwidth = 2)
 
 
 
 ```
 
-
-_Write your text to answer exercise 1b here (Please delete this message before submission!)_
-
+similarity: they are same tendency: most participants are in a range(age \>=20 and age \<=40), there are seldom participants over 60 or lower than 20. young adults is main force in Cherryblossom difference: number of participants in "5k" is much lessr than "10 miles", maximum in "5k" is around 200 but in "10 miles" is around 1500!
 
 ## Exercise 2
 
@@ -53,10 +48,7 @@ _Write your text to answer exercise 1b here (Please delete this message before s
 
 ```
 
-_Write your text to answer exercise 2b here (Please delete this message before submission!)_
-
-
-
+*Write your text to answer exercise 2b here (Please delete this message before submission!)*
 
 ## Exercise 3
 
@@ -69,10 +61,6 @@ _Write your text to answer exercise 2b here (Please delete this message before s
 
 ```
 
-
-
-
-
 ## Exercise 4
 
 #### Example of a good data visualisation
@@ -82,34 +70,27 @@ _Write your text to answer exercise 2b here (Please delete this message before s
 knitr::include_graphics("img/good_viz.png")
 ```
 
-_Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)_
+*Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)*
 
 **Author/Organisation**, "**Title of website**" [Online]. Available at: **URL** (Accessed: **day month year**)
 
-
 The above image presents a good data visualisation because:
 
--   _Reason 1_
--   _Reason 2_
-
+-   *Reason 1*
+-   *Reason 2*
 
 #### Example of a bad data visualisation
-
 
 ```{r ex4_bad_viz, echo = FALSE, out.width = "80%"}
 # edit the file path accordingly
 knitr::include_graphics("img/bad_viz.png")
 ```
 
-_Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)_
+*Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)*
 
 **Author/Organisation**, "**Title of website**" [Online]. Available at: **URL** (Accessed: **day month year**)
 
-
-
 The above image presents a bad data visualisation because:
 
--   _Reason 1_
--   _Reason 2_
-
-
+-   *Reason 1*
+-   *Reason 2*
