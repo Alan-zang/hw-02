@@ -48,14 +48,14 @@ ggplot(data = data1,
        mapping = aes(x = sex, y = mins)) + 
   geom_boxplot( ) +
   labs(
-    x = "sex of participents",
+    x = "sex of participants",
     y = "costs minutes "
     )
 
 
 ```
 
-*Write your text to answer exercise 2b here (Please delete this message before submission!)*
+In general, female participants cost more time than male participants.
 
 ## Exercise 3
 
