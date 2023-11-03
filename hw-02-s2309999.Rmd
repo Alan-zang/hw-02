@@ -41,9 +41,16 @@ similarity: they are same tendency: most participants are in a range(age \>=20 a
 ## Exercise 2
 
 ```{r ex2, out.width = "80%"}
-# Write your code to answer exercise 2a here
+run17 %>% 
+  mutate(mins = round(net_sec/60), na.rm = TRUE) -> data1
 
-
+ggplot(data = data1, 
+       mapping = aes(x = sex, y = mins)) + 
+  geom_boxplot( ) +
+  labs(
+    x = "sex of participents",
+    y = "costs minutes "
+    )
 
 
 ```
@@ -53,7 +60,12 @@ similarity: they are same tendency: most participants are in a range(age \>=20 a
 ## Exercise 3
 
 ```{r ex3, out.width = "80%"}
-# Write your code to answer exercise 3 here
+ggplot(data = run17 %>% filter(event == "10 Mile"), 
+       mapping = aes(x = clock_sec - net_sec)) + 
+  geom_histogram(binwidth = 10)
+ggplot(data = run17 %>% filter(event == "10 Mile"),
+       mapping = aes(x = age , y = clock_sec - net_sec)) + 
+  geom_point( ) 
 
 
 
