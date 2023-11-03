@@ -45,7 +45,8 @@ run17 %>%
   mutate(mins = round(net_sec/60), na.rm = TRUE) -> data1
 
 ggplot(data = data1, 
-       mapping = aes(x = sex, y = mins)) + 
+       mapping = aes(x = sex, y = mins)
+       ) + 
   geom_boxplot( ) +
   labs(
     x = "sex of participants",
@@ -60,14 +61,23 @@ In general, female participants cost more time than male participants.
 ## Exercise 3
 
 ```{r ex3, out.width = "80%"}
-ggplot(data = run17 %>% filter(event == "10 Mile"), 
-       mapping = aes(x = clock_sec - net_sec)) + 
-  geom_histogram(binwidth = 10)
-ggplot(data = run17 %>% filter(event == "10 Mile"),
-       mapping = aes(x = age , y = clock_sec - net_sec)) + 
-  geom_point( ) 
+run17 %>% 
+  filter(event == "10 Mile") %>%
+  filter(clock_sec - net_sec <= 180 | clock_sec - net_sec >= 23* 60) %>%
+  mutate(wave = ifelse(clock_sec-net_sec <= 180, "first","last"))%>%
+  mutate(netmin = net_sec/60) -> data2
 
 
+  ggplot(data = data2, aes(x = age , y = netmin, color = wave))+
+  geom_point()+
+  geom_smooth(aes(group = wave), method = lm, formula = y ~ x , se = FALSE) +
+  labs(
+    x = "Runner's Age , in years",
+    y = "Race Time, in minutes",
+    title = "Scallar Plot of 10 Mile Race,Time Against Age",
+    subtitle = "First vs Last wave")+
+    scale_color_manual(values = c("first" = "orange", "last" = "forestgreen"))
+  
 
 
 
@@ -78,31 +88,27 @@ ggplot(data = run17 %>% filter(event == "10 Mile"),
 #### Example of a good data visualisation
 
 ```{r ex4_good_viz, echo = FALSE, out.width = "80%"}
-# edit the file path accordingly
-knitr::include_graphics("img/good_viz.png")
+knitr::include_graphics("img/good.jpg")
 ```
 
-*Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)*
 
-**Author/Organisation**, "**Title of website**" [Online]. Available at: **URL** (Accessed: **day month year**)
+** US Office of Management and Budget (2016)**, "**Data is beautiful: 10 of the best data visualisation examples from history to today**" [Online]. Available at: **https://www.tableau.com/en-gb/learn/articles/best-beautiful-data-visualization-examples** (Accessed: **3/11/2023**)
 
 The above image presents a good data visualisation because:
 
--   *Reason 1*
--   *Reason 2*
+-   *reason 1 : clearly color to disringuish different budget spending ways*
+-   *Reason 2 : nice proportion of different color to explain the mount spending in different ways *
 
 #### Example of a bad data visualisation
 
 ```{r ex4_bad_viz, echo = FALSE, out.width = "80%"}
-# edit the file path accordingly
-knitr::include_graphics("img/bad_viz.png")
+knitr::include_graphics("img/bad.jpg")
 ```
 
-*Edit the text below by replacing the bold text with the appropriate information to provide a reference for your image (Please delete this message before submission!)*
 
-**Author/Organisation**, "**Title of website**" [Online]. Available at: **URL** (Accessed: **day month year**)
+**unkwon**, "**When Data Visualization Really Isn’t Useful (and When It Is)**" [Online]. Available at: **https://www.oldstreetsolutions.com/good-and-bad-data-visualization** (Accessed: **3/11/2023**)
 
 The above image presents a bad data visualisation because:
 
--   *Reason 1*
--   *Reason 2*
+-   *Reason 1:Devastating destruction of data, almost no readability*
+-   *Reason 2:The odd ratio makes most of the variables missing*
